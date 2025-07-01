@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Wallet</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .wallet-container {
+      background: #ffffff10;
+      backdrop-filter: blur(8px);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .balance {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .label {
+      font-size: 16px;
+      opacity: 0.8;
+      margin-bottom: 30px;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .wallet-btn {
+      background-color: #ffffff15;
+      border: 1px solid #ffffff40;
+      color: white;
+      padding: 15px;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .wallet-btn:hover {
+      background-color: #ffffff30;
+    }
+
+    .logout-btn {
+      margin-top: 30px;
+      background-color: #ff4e50;
+      border: none;
+      padding: 10px 20px;
+      font-size: 15px;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .logout-btn:hover {
+      background-color: #e33c3f;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 13px;
+      opacity: 0.6;
+    }
+
+    .icon {
+      font-size: 20px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wallet-container">
+    <div class="label">Your Balance</div>
+    <div class="balance" id="balance">$500.00</div>
+
+    <div class="button-grid">
+      <button class="wallet-btn"><span class="icon">📤</span> Send</button>
+      <button class="wallet-btn"><span class="icon">📥</span> Receive</button>
+      <button class="wallet-btn"><span class="icon">➕</span> Deposit</button>
+      <button class="wallet-btn"><span class="icon">➖</span> Withdraw</button>
+      <button class="wallet-btn"><span class="icon">📄</span> History</button>
+      <button class="wallet-btn"><span class="icon">⚙️</span> Settings</button>
+    </div>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <div class="footer">My Wallet &copy; 2025</div>
+
+  <script>
+    // Redirect to login if not logged in
+    if (localStorage.getItem("isLoggedIn") !== "true") {
+      window.location.href = "login.html";
+    }
+
+    function logout() {
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "login.html";
+    }
+
+    // Optional: Save balance to localStorage in the future
+    // localStorage.setItem("walletBalance", "500.00");
+  </script>
+</body>
+</html>
